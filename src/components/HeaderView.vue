@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1><a href="#">LOGO</a></h1>
+    <h1><a href="#">COMPANY</a></h1>
     <div class="nav">
         <ul>
             <li v-for="item in menu" v-bind:key="item">{{item}}</li>
