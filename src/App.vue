@@ -2,6 +2,12 @@
   <HeaderView></HeaderView>
   <MainVisual></MainVisual>
   <DirectBanner v-bind:data = "directData"></DirectBanner>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 bg-primary">test</div>
+      <div class="col-md-6 bg-info">test</div>
+    </div>
+  </div>
 </template>
 
 <script>

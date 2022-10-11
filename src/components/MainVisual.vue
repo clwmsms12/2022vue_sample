@@ -1,31 +1,61 @@
 <template>
-  <div class="visual">
-    <Swiper>
-      <SwiperSlide class="item">test1</SwiperSlide>
-      <SwiperSlide class="item">test2</SwiperSlide>
-      <SwiperSlide class="item">test3</SwiperSlide>
-    </Swiper>
-  </div>
+  <swiper 
+  :navigation="true" 
+  :modules="modules" 
+  :loop="true"
+  :pagination="{
+      clickable: true,
+    }"
+  class="mySwiper"
+  >
+    <swiper-slide 
+      v-for="(item,i) in swiperView" 
+      :key="item" 
+      :style="{'background-color':`${swiperView[i].color}`}"
+    >
+      <!-- <div :style="{'background-color':`${item.color}`}" class="innerItem"> -->
+      <div class="innerItem">
+        <img :src="`./images/swiper/${item.src}`" alt="">
+      </div>
+    </swiper-slide>
+    
+  </swiper>
 </template>
-
 <script>
-  import {Swiper,SwiperSlide} from "swiper/vue"
-  import "swiper/css"
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+// import required modules
+import { Navigation,Pagination } from "swiper";
+//swiper data
+import sData from "@/data/swiper.js"
 export default {
-  components:{
+  components: {
     Swiper,
     SwiperSlide,
-  }
-}
+  },
+  setup() {
+    return {
+      modules: [Navigation,Pagination],
+      swiperView:sData,
+    };
+  },
+};
 </script>
-
 <style lang="scss">
-    .visual{
-        background: pink;
-        margin-bottom: 20px;
-        .item{
-          height: 300px;
-          display: flex;justify-content: center;align-items: center;
-          }
+  .mySwiper{
+    .swiper-slide{
+      height: 400px;
+      .innerItem{ 
+        height: 100%;
+      }
+      img{
+        display: block;
+        margin:0 auto
+      }
     }
+  }
 </style>
