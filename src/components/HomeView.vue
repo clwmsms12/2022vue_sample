@@ -1,6 +1,5 @@
 <template>
-  test
-  <router-view></router-view>
+  여기는 홈 입니다.
 </template>
 
 <script>
